@@ -13,9 +13,6 @@ codeFrom.value = `public class Movie
 
 document.getElementById('generate').addEventListener('click', function() {
 	var codeArray = codeFrom.value.split('\n');
-	for (var i = 0; i < codeArray.length; i++){
-		csharp.from(codeArray[i])
-
-	}
+	csharp.from(codeArray)
 	console.info(codeTo.value)
 });
