@@ -23,7 +23,7 @@ class csharp {
 				var prop = new ClassProperties();
 				var words = codeArray[i].trim().split(" ");
 				console.log(words)
-				newClass.properties.push(new ClassProperties(words[0], words[1], words[2]))
+				newClass.properties.push(new ClassProperties(words[0], words[2], words[1]))
 			}
 
 		}
