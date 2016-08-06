@@ -1,24 +1,31 @@
 var codeFrom = document.getElementById("codeFrom");
 var codeTo = document.getElementById("codeTo");
 
-codeFrom.value = `public class Movie 
+codeFrom.innerText = `public class Movie 
 {
     public int ID { get; set; }
     public List<string> Title { get; set; }
     public DateTime ReleaseDate { get; set; }
     public string Genre { get; set; }
     public decimal Price { get; set; }
+    public List<Actor> Actors { get; set; }
+}
+
+public class Actor {
+	public string name { get; set; }
+	public int age { get; set; }
 }
 `;
 
 document.getElementById('generate').addEventListener('click', function() {
-	var codeArray = codeFrom.value.split('\n');
+	var codeArray = codeFrom.innerText.split('\n');
 	var thing = csharp.from(codeArray);
 		console.warn("Done!", thing);
 
 	var newClass = typescript.to(thing);
 		console.warn("Done!", newClass);
 
-	codeTo.value = newClass;
+	codeTo.innerText = newClass;
+	hljs.highlightBlock(codeTo);
 	console.info(codeTo.value);
 });

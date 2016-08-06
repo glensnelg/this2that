@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/vs.min.css">
 		<title>Convert this to that...</title>
 	</head>
 	<body>
@@ -14,13 +15,13 @@
 				<div class="col-xs-6">
 					<div class="form-group">
 					 	<label for="comment">From:</label>
-					  	<textarea class="form-control" rows="15" id="codeFrom"></textarea>
+					  	<pre class="form-control" contenteditable="true"><code id="codeFrom"></code></pre>
 					</div>
 				</div>
 				<div class="col-xs-6">
 					<div class="form-group">
 						<label for="comment">To:</label>
-						<textarea class="form-control" rows="15" id="codeTo"></textarea>
+						<pre class="form-control" contenteditable="true"><code class="ts" id="codeTo"></code></pre>
 					</div>
 				</div>
 			</div>
@@ -30,6 +31,8 @@
 				</div>
 			</div>
 		</div>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
 		<script src="js/typescript.js"></script>
 		<script src="js/csharp.js"></script>
 		<script src="js/main.js"></script>

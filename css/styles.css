@@ -1,7 +1,3 @@
-textarea {
-	color:red;
-}
-
-.test {
-	color:red;
+pre {
+    min-height: 300px !important;
 }
