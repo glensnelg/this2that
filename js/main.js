@@ -13,6 +13,12 @@ codeFrom.value = `public class Movie
 
 document.getElementById('generate').addEventListener('click', function() {
 	var codeArray = codeFrom.value.split('\n');
-	csharp.from(codeArray)
-	console.info(codeTo.value)
+	var thing = csharp.from(codeArray);
+		console.warn("Done!", thing);
+	
+	var newClass = typescript.to(thing);
+		console.warn("Done!", newClass);
+
+	codeTo.value = newClass;
+	console.info(codeTo.value);
 });

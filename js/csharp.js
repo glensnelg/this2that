@@ -26,7 +26,7 @@ class csharp {
 			}
 
 		}
-		console.warn("Done!", thing);
+		return thing;
 	}
 
 	static to(values) {
