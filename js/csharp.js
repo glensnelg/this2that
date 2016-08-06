@@ -1,32 +1,34 @@
 
 class csharp {
 	static from(codeArray) {
-		var thing = {};
+		var classes = [];
+		var newClass = new BaseClass();
+
 		for (var i = 0; i < codeArray.length; i++){
-			if(codeArray[i].indexOf(" class ") != -1)
+			console.log('line', codeArray[i])
+			if(codeArray[i].indexOf(" class ") != -1)	//new clss
 			{
+				newClass = new BaseClass();
 				var words = codeArray[i].split(" ");
-				var thing = {
-					access: words[0],
-					name: words[2],
-					properties: []
-				};
+				newClass.access = words[0];
+				newClass.name = words[2];
+			}
+			else if(codeArray[i].trim() === '}'){ //end of class
+				classes.push(newClass)
 			}
 			else if(codeArray[i].length < 3) {
 				console.info("We do nothing ...")
 			}
-			else {
+			else {	//class property
+				var prop = new ClassProperties();
 				var words = codeArray[i].trim().split(" ");
 				console.log(words)
-				thing.properties.push({
-					access: words[0],
-					type: words[1],
-					name: words[2],
-				});
+				newClass.properties.push(new ClassProperties(words[0], words[1], words[2]))
 			}
 
 		}
-		return thing;
+		console.log('classes', classes)
+		return classes;
 	}
 
 	static to(values) {
