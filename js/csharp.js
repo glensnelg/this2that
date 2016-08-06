@@ -6,22 +6,23 @@ class csharp {
 
 		for (var i = 0; i < codeArray.length; i++){
 			console.log('line', codeArray[i])
-			if(codeArray[i].indexOf(" class ") != -1)	//new clss
+			var currentLine = codeArray[i].trim();
+			if(currentLine.indexOf(" class ") != -1)	//new clss
 			{
 				newClass = new BaseClass();
-				var words = codeArray[i].split(" ");
+				var words = currentLine.split(" ");
 				newClass.access = words[0];
 				newClass.name = words[2];
 			}
-			else if(codeArray[i].trim() === '}'){ //end of class
+			else if(currentLine === '}'){ //end of class
 				classes.push(newClass)
 			}
-			else if(codeArray[i].length < 3) {
+			else if(currentLine.length < 3) {
 				console.info("We do nothing ...")
 			}
 			else {	//class property
 				var prop = new ClassProperties();
-				var words = codeArray[i].trim().split(" ");
+				var words = currentLine.split(" ");
 				console.log(words)
 				newClass.properties.push(new ClassProperties(words[0], words[2], words[1]))
 			}
