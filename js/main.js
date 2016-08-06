@@ -12,8 +12,8 @@ codeFrom.innerText = `public class Movie
 }
 
 public class Actor {
-	public string name { get; set; }
-	public int age { get; set; }
+	public string Name { get; set; }
+	public int Age { get; set; }
 }
 `;
 

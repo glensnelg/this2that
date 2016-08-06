@@ -36,6 +36,9 @@ function getType(type) {
 	}
 }
 
+function deCapitalizeFirstLetter(string) {
+    return string.charAt(0).toLowerCase() + string.slice(1);
+}
 
 class typescript {
 
@@ -51,7 +54,7 @@ class typescript {
 			var data = classes[c];
 			newClass += "export class " + data.name + " {\n";
 			for(var i = 0; i < data.properties.length; i++) {
-				newClass += "\t" + data.properties[i].access + " " + data.properties[i].name + ": " + getType(data.properties[i].type) + ";\n";
+				newClass += "\t" + data.properties[i].access + " " + deCapitalizeFirstLetter(data.properties[i].name) + ": " + getType(data.properties[i].type) + ";\n";
 			}
 			newClass += "} \n";
 
