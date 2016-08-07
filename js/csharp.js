@@ -10,7 +10,7 @@ class csharp {
 			if(currentLine.indexOf(" class ") != -1)	//new clss
 			{
 				newClass = new BaseClass();
-				var words = currentLine.split(" ");
+				var words = currentLine.split(/[ ,]+/);
 				newClass.access = words[0];
 				newClass.name = words[2];
 			}
@@ -22,7 +22,7 @@ class csharp {
 			}
 			else {	//class property
 				var prop = new ClassProperties();
-				var words = currentLine.split(" ");
+				var words = currentLine.split(/[ ,]+/);
 				console.log(words)
 				newClass.properties.push(new ClassProperties(words[0], words[2], words[1]))
 			}
