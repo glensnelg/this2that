@@ -9,3 +9,7 @@ function ClassProperties(access,name,type){
 	this.name = name ? name : '';
 	this.type = type ? type : '';
 }
+
+function ParseSettings(){
+	this.firstLetterLower = false;
+}

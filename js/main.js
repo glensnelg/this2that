@@ -22,10 +22,19 @@ document.getElementById('generate').addEventListener('click', function() {
 	var thing = csharp.from(codeArray);
 		console.warn("Done!", thing);
 
-	var newClass = typescript.to(thing);
+	var settings = getSettings();
+
+	var newClass = typescript.to(thing, settings);
 		console.warn("Done!", newClass);
 
 	codeTo.innerText = newClass;
 	hljs.highlightBlock(codeTo);
 	console.info(codeTo.value);
 });
+
+function getSettings(){
+	var settings = new ParseSettings()
+	settings.firstLetterLower = document.getElementById('lowerCaseFirstLetter').checked;
+
+	return settings;
+}
