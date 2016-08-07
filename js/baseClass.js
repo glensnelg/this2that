@@ -12,4 +12,6 @@ function ClassProperties(access,name,type){
 
 function ParseSettings(){
 	this.firstLetterLower = false;
+	this.fromLanguage = '';
+	this.toLanguage = '';
 }

@@ -18,13 +18,20 @@ public class Actor {
 `;
 
 document.getElementById('generate').addEventListener('click', function() {
+	//Get settings
+	var settings = getSettings();
+	if(!settings){
+		return;
+	}
+	//parse from
+	var fromLang = getLanguageParser(settings.fromLanguage);
 	var codeArray = codeFrom.innerText.split('\n');
-	var thing = csharp.from(codeArray);
+	var thing = fromLang.from(codeArray);
 		console.warn("Done!", thing);
 
-	var settings = getSettings();
-
-	var newClass = typescript.to(thing, settings);
+	//parse to
+	var toLang = getLanguageParser(settings.toLanguage);
+	var newClass = toLang.to(thing, settings);
 		console.warn("Done!", newClass);
 
 	codeTo.innerText = newClass;
@@ -32,9 +39,26 @@ document.getElementById('generate').addEventListener('click', function() {
 	console.info(codeTo.value);
 });
 
+
 function getSettings(){
 	var settings = new ParseSettings()
 	settings.firstLetterLower = document.getElementById('lowerCaseFirstLetter').checked;
-
+	settings.fromLanguage = document.getElementById('fromLanguage').value;
+	settings.toLanguage = document.getElementById('toLanguage').value
+	if(!settings.toLanguage || !settings.fromLanguage){
+		console.warn('Language missing');
+		return null;
+	}
 	return settings;
+}
+
+function getLanguageParser(lang){
+	switch (lang) {
+		case 'c#':
+			return csharp;
+		case 'ts':
+			return typescript;
+		default:
+			return csharp;
+	}
 }
