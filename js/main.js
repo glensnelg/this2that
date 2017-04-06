@@ -44,7 +44,8 @@ function getSettings(){
 	var settings = new ParseSettings()
 	settings.firstLetterLower = document.getElementById('lowerCaseFirstLetter').checked;
 	settings.fromLanguage = document.getElementById('fromLanguage').value;
-	settings.toLanguage = document.getElementById('toLanguage').value
+	settings.toLanguage = document.getElementById('toLanguage').value;
+	settings.generateCSharpGetSet = document.getElementById('generateCSharpGetSet').checked;
 	if(!settings.toLanguage || !settings.fromLanguage){
 		console.warn('Language missing');
 		return null;

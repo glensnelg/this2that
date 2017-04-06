@@ -14,4 +14,5 @@ function ParseSettings(){
 	this.firstLetterLower = false;
 	this.fromLanguage = '';
 	this.toLanguage = '';
+	this.generateCSharpGetSet = false;
 }

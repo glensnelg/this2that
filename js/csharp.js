@@ -69,7 +69,12 @@ class csharp {
 			var data = classes[c];
 			newClass += "public class " + data.name + " {\n";
 			for(var i = 0; i < data.properties.length; i++) {
-				newClass += "\t" + data.properties[i].access + " " + getSharperType(data.properties[i].type) + " " + (settings.firstLetterLower ? deCapitalizeFirstLetter(data.properties[i].name) : data.properties[i].name) +";\n";
+				newClass += "\t" 
+					+ data.properties[i].access + " " + 
+					getSharperType(data.properties[i].type) + " " +
+					 (settings.firstLetterLower ? deCapitalizeFirstLetter(data.properties[i].name) : data.properties[i].name) +
+					 (settings.generateCSharpGetSet ? " { get; set; }" : "") +
+					 ";\n";
 			}
 			newClass += "} \n";
 		}
